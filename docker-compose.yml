@@ -1,0 +1,13 @@
+version: '3.1'
+services:
+  apache:
+    image: httpd:2.4
+    container_name: apache_with_https
+    volumes:
+      - ./conf/httpd.conf:/usr/local/apache2/conf/httpd.conf
+      - ./conf/httpd-ssl.conf:/usr/local/apache2/conf/extra/httpd-ssl.conf
+      - ./server.crt:/usr/local/apache2/conf/server.crt
+      - ./server.key:/usr/local/apache2/conf/server.key
+    ports:
+      # - 80:80
+      - 443:443
